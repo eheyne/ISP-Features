@@ -1,0 +1,17 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+.bundle
+
+# misc
+.ruby-gemset
+
+**/.DS_Store
+
+.idea/
+
+# Ignore locally-installed rubygems (bundle install --path bundle)
+bundle/
+
+screenshots
+*.swp
+*.swo

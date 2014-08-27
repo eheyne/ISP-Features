@@ -1,0 +1,1 @@
+This folder is required to publish the HTML reports of the test run in the build process.
