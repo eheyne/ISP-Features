@@ -8,6 +8,12 @@ Feature: Student turns in assignment 2
   @Ready
   Scenario: Grader verifies the existence of a p tag in the document
     Given Successful navigation to a students page
-    When the title of the current page is "Assignment 2"
-    When Page render is complete
-    Then I validate that a p tag exists on the page
+    Then the title of the current page is "Assignment 2"
+
+  Scenario: Grader verifies the existence of the students name in a span tag
+    Given Successful navigation to a students page
+    Then I validate that a span tag with an id of "name" exists
+
+  Scenario: Grader verifies the existence of the date/time in a p tag
+    Given Successful navigation to a students page
+    Then I validate that a p tag with an id of "date" exists
