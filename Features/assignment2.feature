@@ -6,7 +6,7 @@ Feature: Student turns in assignment 2
     Given A browser is installed on the machine
 
   @Ready
-  Scenario: Grader verifies the existence of a p tag in the document
+  Scenario: Grader verifies the title is Assignment 2 in the document
     Given Successful navigation to a students page
     Then the title of the current page is "Assignment 2"
 
@@ -17,3 +17,24 @@ Feature: Student turns in assignment 2
   Scenario: Grader verifies the existence of the date/time in a p tag
     Given Successful navigation to a students page
     Then I validate that a p tag with an id of "date" exists
+
+  Scenario: Grader verifies the existence of the h1 tag with content Assignment 2 and ID assignment
+    Given Successful navigation to a students page
+    Then I validate that a h1 tag with an id of "assignment" and content "Assignment 2" exists  	
+
+  Scenario: Grader verifies the existence of the h2 tag with content Internet Systems Programming and ID class-title
+    Given Successful navigation to a students page
+    Then I validate that a h2 tag with an id of "class-title" and content "Internet Systems Programming" exists  	
+
+  Scenario: Grader verifies the existence of the line break
+    Given Successful navigation to a students page
+    Then I validate that a line break exists
+
+	Scenario: Grader verifies the existence of the horizontal rules
+    Given Successful navigation to a students page
+    Then I validate that a horizontal rule exists
+
+  @Test
+  Scenario: Grader verifies the existence of an image
+    Given Successful navigation to a students page
+    Then I validate that an image with source and alt exists
