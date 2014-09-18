@@ -10,6 +10,7 @@ Feature: Student turns in assignment 2
     Given Successful navigation to a students page
     Then the title of the current page is "Assignment 2"
 
+	
   Scenario: Grader verifies the existence of the students name in a span tag
     Given Successful navigation to a students page
     Then I validate that a span tag with an id of "name" exists
@@ -34,7 +35,44 @@ Feature: Student turns in assignment 2
     Given Successful navigation to a students page
     Then I validate that a horizontal rule exists
 
-  @Test
-  Scenario: Grader verifies the existence of an image
+    Scenario: Grader verifies the existence of an image
     Given Successful navigation to a students page
     Then I validate that an image with source and alt exists
+	
+	
+	Scenario: Grader verifies the existence of a link tag
+    Given Successful navigation to a students page
+    Then I validate that an link tag exists
+	
+	
+	Scenario: Grader verifies the existence that an unordered list
+    Given Successful navigation to a students page
+    Then I validate that an unordered list with an id of "u-list" exists
+	
+	
+	Scenario: Grader verifies the existence that a ordered list
+    Given Successful navigation to a students page
+    Then I validate that an ordered list with an id of "o-list" exists
+	
+	
+	Scenario: Grader verifies the existence of a table,header,columns and rows
+    Given Successful navigation to a students page
+    Then I validate that a table with id of "table",header,columns and rows exists
+	
+	
+	Scenario: Grader verifies the existence of a document level CSS
+    Given Successful navigation to a students page
+    Then I validate that a document level CSS exists
+	
+	
+	Scenario: Grader verifies the existence of a external level CSS
+    Given Successful navigation to a students page
+    Then I validate that a external level CSS exists
+	@Test
+	Scenario: Grader verifies the existence of a inline level CSS
+    Given Successful navigation to a students page
+    Then I validate that a inline level CSS exists
+	
+	Scenario: Grader verifies the existence of a inline level CSS
+    Given Successful navigation to a students page
+    Then I validate that a inline level CSS exists
