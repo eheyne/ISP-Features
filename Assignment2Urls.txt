@@ -1,3 +1,2 @@
-www.google.com
-www.yahoo.com
-www.uakron.edu
+http://pausch.cs.uakron.edu/~sma56/Assignments/Assignment2/index.html
+http://pausch.cs.uakron.edu/~jew45/Assignments/assignment2/assignment2.html
