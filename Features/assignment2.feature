@@ -68,11 +68,52 @@ Feature: Student turns in assignment 2
 	Scenario: Grader verifies the existence of a external level CSS
     Given Successful navigation to a students page
     Then I validate that a external level CSS exists
-	@Test
-	Scenario: Grader verifies the existence of a inline level CSS
-    Given Successful navigation to a students page
-    Then I validate that a inline level CSS exists
+	
 	
 	Scenario: Grader verifies the existence of a inline level CSS
     Given Successful navigation to a students page
     Then I validate that a inline level CSS exists
+	
+	
+	Scenario: Grader verifies the existence of a font properties in inline CSS
+    Given Successful navigation to a students page
+    Then I validate that font properties in inline css exists
+	
+	
+	Scenario: Grader verifies the existence of a text properties in inline CSS
+    Given Successful navigation to a students page
+    Then I validate that text properties in inline css exists
+	
+	
+	Scenario: Grader verifies the existence of a list properties in inline CSS
+    Given Successful navigation to a students page
+    Then I validate that list properties in inline css exists
+	
+	
+	Scenario: Grader verifies the existence of a colors properties in inline CSS
+    Given Successful navigation to a students page
+    Then I validate that colors properties in inline css exists
+	
+	
+	Scenario: Grader verifies the existence of a padding properties in inline CSS
+    Given Successful navigation to a students page
+    Then I validate that padding properties in inline css exists
+	
+	
+	Scenario: Grader verifies the existence of a padding properties in inline CSS
+    Given Successful navigation to a students page
+    Then I validate that margin properties in inline css exists
+	
+	Scenario: Grader verifies the existence of a background properties in inline CSS
+    Given Successful navigation to a students page
+    Then I validate that background properties in inline css exists
+	
+		
+		Scenario: Grader verifies the existence of a border properties in inline CSS
+    Given Successful navigation to a students page
+    Then I validate that border properties in inline css exists
+	
+	@Test
+	Scenario: Grader verifies the existence of a color properties in document CSS
+    Given Successful navigation to a students page
+    Then I validate that color properties in document css exists

@@ -144,4 +144,151 @@ Then /^I validate that a external level CSS exists$/ do
 	inlineElementLength.should > 0
  end
 	
+	Then /^I validate that font properties in inline css exists$/ do
+ inlineElementFont = 0
+	@browser.elements.each do |element|
+		if element.tag_name == 'body'
+			element.elements.each do |bodyElement|
+				
+					if bodyElement.style.include?"font"
+					inlineElementFont = 10
+					puts "bodyElement.html is #{bodyElement.style} with a length of #{bodyElement.style.length}"
+					end
+				end
+		end
+	end
+	inlineElementFont.should > 0
+ end
 
+Then /^I validate that text properties in inline css exists$/ do
+ inlineElementText = 0
+	@browser.elements.each do |element|
+		if element.tag_name == 'body'
+			element.elements.each do |bodyElement|
+					if bodyElement.style.include?"text"
+					inlineElementText = 10
+					puts "bodyElement.html is #{bodyElement.style} with a length of #{bodyElement.style.length}"
+					end
+				end
+		end
+	end
+	inlineElementText.should > 0
+ end
+ 
+ Then /^I validate that list properties in inline css exists$/ do
+ inlineElementList = 0
+	@browser.elements.each do |element|
+		if element.tag_name == 'body'
+			element.elements.each do |bodyElement|
+					if bodyElement.style.include?"list-style-image"
+					inlineElementList = 10
+					puts "bodyElement.html is #{bodyElement.style} with a length of #{bodyElement.style.length}"
+					end
+					if bodyElement.style.include?"list-style-type"
+					inlineElementList = 10
+					puts "bodyElement.html is #{bodyElement.style} with a length of #{bodyElement.style.length}"
+					end
+				end
+		end
+	end
+	inlineElementList.should > 0
+ end
+
+  Then /^I validate that colors properties in inline css exists$/ do
+ inlineElementcolor = 0
+	@browser.elements.each do |element|
+		if element.tag_name == 'body'
+			element.elements.each do |bodyElement|
+					if bodyElement.style.include?"color"
+					inlineElementcolor = 10
+					puts "bodyElement.html is #{bodyElement.style} with a length of #{bodyElement.style.length}"
+					end
+					
+				end
+		end
+	end
+	inlineElementcolor.should > 0
+ end
+ 
+   Then /^I validate that padding properties in inline css exists$/ do
+ inlineElementPadding = 0
+	@browser.elements.each do |element|
+		if element.tag_name == 'body'
+			element.elements.each do |bodyElement|
+					if bodyElement.style.include?"padding"
+					inlineElementPadding = 10
+					puts "bodyElement.html is #{bodyElement.style} with a length of #{bodyElement.style.length}"
+					end
+					
+				end
+		end
+	end
+	inlineElementPadding.should > 0
+ end
+ 
+ 
+    Then /^I validate that margin properties in inline css exists$/ do
+ inlineElementmargin = 0
+	@browser.elements.each do |element|
+		if element.tag_name == 'body'
+			element.elements.each do |bodyElement|
+					if bodyElement.style.include?"margin"
+					inlineElementmargin = 10
+					puts "bodyElement.html is #{bodyElement.style} with a length of #{bodyElement.style.length}"
+					end
+					
+				end
+		end
+	end
+	inlineElementmargin.should > 0
+ end
+ 
+     Then /^I validate that background properties in inline css exists$/ do
+ inlineElementbackground = 0
+	@browser.elements.each do |element|
+		if element.tag_name == 'body'
+			element.elements.each do |bodyElement|
+					if bodyElement.style.include?"background"
+					inlineElementbackground = 10
+					puts "bodyElement.html is #{bodyElement.style} with a length of #{bodyElement.style.length}"
+					end
+					
+				end
+		end
+	end
+	inlineElementbackground.should > 0
+ end
+     Then /^I validate that border properties in inline css exists$/ do
+ inlineElementborder = 0
+	@browser.elements.each do |element|
+		if element.tag_name == 'body'
+			element.elements.each do |bodyElement|
+					if bodyElement.style.include?"border"
+					inlineElementborder = 10
+					puts "bodyElement.html is #{bodyElement.style} with a length of #{bodyElement.style.length}"
+					end
+					
+				end
+		end
+	end
+	inlineElementborder.should > 0
+ end
+Then /^I validate that color properties in document css exists$/ do 
+	styleElementLength = 0
+	@browser.elements.each do |element|
+		if element.tag_name == 'head'
+			element.elements.each do |headElement|
+				if headElement.tag_name == 'style'
+				puts "head elements is #{headElement.tag_name}"
+				puts " headElement text is #{headElement.text}"
+										if headElement.text.include?"color"
+										styleElementLength = 10
+					puts "headElement.html is #{headElement.html} with a length of #{headElement.html.length}"
+				end
+				end
+				puts "head elements is #{headElement.tag_name}"
+			end
+		end
+	end
+	styleElementLength.should > 0
+end 
