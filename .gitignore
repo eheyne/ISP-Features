@@ -13,6 +13,9 @@ output.html
 # Ignore locally-installed rubygems (bundle install --path bundle)
 bundle/
 
+# Ignore output files
+output/
+
 screenshots
 *.swp
 *.swo

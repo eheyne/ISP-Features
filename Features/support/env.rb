@@ -3,7 +3,6 @@
 require 'watir-webdriver'
 
 ENV['BROWSER']         = "chrome"                         unless ENV['BROWSER']
-ENV['SERVER_IP']       = "10.30.0.68"                     unless ENV['SERVER_IP']
 
 puts "The browser type is #{ENV['BROWSER']}"
 

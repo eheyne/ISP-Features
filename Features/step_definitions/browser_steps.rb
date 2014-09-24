@@ -9,9 +9,10 @@ puts "to test if browser opened #{@browser.inspect}"
 end
 
 Given /^Successful navigation to a students page$/ do
-  url1 = 'http://localhost/Testhtml/index.html'
-  @browser.goto url1
-  @browser.url.should == url1
+  url = ENV['STUDENT_URL']
+  @browser.goto url
+  sleep 2
+  @browser.url.should == url
 puts "browser URL is set to #{@browser.inspect}"
 end
 
