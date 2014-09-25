@@ -3,9 +3,7 @@ require 'watir-webdriver'
 # World(PageObject::PageFactory)
 
 Given /^A browser is installed on the machine$/ do
-puts "hello checkpoint 1"
   @browser.nil?.should == false
-puts "to test if browser opened #{@browser.inspect}"
 end
 
 Given /^Successful navigation to a students page$/ do
@@ -13,7 +11,6 @@ Given /^Successful navigation to a students page$/ do
   @browser.goto url
   sleep 2
   @browser.url.should == url
-puts "browser URL is set to #{@browser.inspect}"
 end
 
 Then /^the title of the current page is "([^\"]*)"/ do |page_title|
@@ -129,165 +126,80 @@ Then /^I validate that a external level CSS exists$/ do
 
   end
   
- Then /^I validate that a inline level CSS exists$/ do
- inlineElementLength = 0
+Then /^I validate that a inline level CSS exists$/ do
+  inlineElementLength = 0
 	@browser.elements.each do |element|
 		if element.tag_name == 'body'
 			element.elements.each do |bodyElement|
-				
-					if (bodyElement.style.length>0)
+        if (bodyElement.style.length>0)
 					inlineElementLength = bodyElement.style.length 
 					puts "bodyElement.html is #{bodyElement.style} with a length of #{bodyElement.style.length}"
 				end
-				end
+      end
 		end
 	end
 	inlineElementLength.should > 0
- end
+end
 	
-	Then /^I validate that font properties in inline css exists$/ do
- inlineElementFont = 0
+Then /^I display the styles defined$/ do
 	@browser.elements.each do |element|
 		if element.tag_name == 'body'
 			element.elements.each do |bodyElement|
-				
-					if bodyElement.style.include?"font"
-					inlineElementFont = 10
-					puts "bodyElement.html is #{bodyElement.style} with a length of #{bodyElement.style.length}"
-					end
-				end
-		end
-	end
-	inlineElementFont.should > 0
- end
+        if bodyElement.style('background-color').length > 0
+          puts "<p>background-color of #{bodyElement.style('background-color')} exists for element #{bodyElement.tag_name}</p>"
+        end
+        if bodyElement.style('font-size').length > 0
+          puts "<p>font-size of #{bodyElement.style('font-size')} exists for element #{bodyElement.tag_name}</p>"
+        end
+        # if bodyElement.style('color').length > 0
+        #   puts "<p>color exists for element #{bodyElement.tag_name}</p>"
+        # end
 
-Then /^I validate that text properties in inline css exists$/ do
- inlineElementText = 0
-	@browser.elements.each do |element|
-		if element.tag_name == 'body'
-			element.elements.each do |bodyElement|
-					if bodyElement.style.include?"text"
-					inlineElementText = 10
-					puts "bodyElement.html is #{bodyElement.style} with a length of #{bodyElement.style.length}"
-					end
-				end
-		end
-	end
-	inlineElementText.should > 0
- end
- 
- Then /^I validate that list properties in inline css exists$/ do
- inlineElementList = 0
-	@browser.elements.each do |element|
-		if element.tag_name == 'body'
-			element.elements.each do |bodyElement|
-					if bodyElement.style.include?"list-style-image"
-					inlineElementList = 10
-					puts "bodyElement.html is #{bodyElement.style} with a length of #{bodyElement.style.length}"
-					end
-					if bodyElement.style.include?"list-style-type"
-					inlineElementList = 10
-					puts "bodyElement.html is #{bodyElement.style} with a length of #{bodyElement.style.length}"
-					end
-				end
-		end
-	end
-	inlineElementList.should > 0
- end
 
-  Then /^I validate that colors properties in inline css exists$/ do
- inlineElementcolor = 0
-	@browser.elements.each do |element|
-		if element.tag_name == 'body'
-			element.elements.each do |bodyElement|
-					if bodyElement.style.include?"color"
-					inlineElementcolor = 10
-					puts "bodyElement.html is #{bodyElement.style} with a length of #{bodyElement.style.length}"
-					end
-					
-				end
+        if bodyElement.style.include? "font"
+          puts "<p>font style exists inline in the element #{bodyElement.tag_name}</p>"
+        end
+        if bodyElement.style.include? "text"
+          puts "<p>text style exists inline in the element #{bodyElement.tag_name}</p>"
+        end
+        if bodyElement.style.include? "list-style-image"
+          puts "<p>list-style-image style exists inline in the element #{bodyElement.tag_name}</p>"
+        end
+        if bodyElement.style.include? "color"
+          puts "<p>color style exists inline in the element #{bodyElement.tag_name}</p>"
+        end
+        if bodyElement.style.include? "padding"
+          puts "<p>padding style exists inline in the element #{bodyElement.tag_name}</p>"
+        end
+        if bodyElement.style.include? "margin"
+          puts "<p>margin style exists inline in the element #{bodyElement.tag_name}</p>"
+        end
+        if bodyElement.style.include? "background"
+          puts "<p>background style exists inline in the element #{bodyElement.tag_name}</p>"
+        end
+        if bodyElement.style.include? "border"
+          puts "<p>border style exists inline in the element #{bodyElement.tag_name}</p>"
+        end
+      end
 		end
 	end
-	inlineElementcolor.should > 0
- end
- 
-   Then /^I validate that padding properties in inline css exists$/ do
- inlineElementPadding = 0
-	@browser.elements.each do |element|
-		if element.tag_name == 'body'
-			element.elements.each do |bodyElement|
-					if bodyElement.style.include?"padding"
-					inlineElementPadding = 10
-					puts "bodyElement.html is #{bodyElement.style} with a length of #{bodyElement.style.length}"
-					end
-					
-				end
-		end
-	end
-	inlineElementPadding.should > 0
- end
- 
- 
-    Then /^I validate that margin properties in inline css exists$/ do
- inlineElementmargin = 0
-	@browser.elements.each do |element|
-		if element.tag_name == 'body'
-			element.elements.each do |bodyElement|
-					if bodyElement.style.include?"margin"
-					inlineElementmargin = 10
-					puts "bodyElement.html is #{bodyElement.style} with a length of #{bodyElement.style.length}"
-					end
-					
-				end
-		end
-	end
-	inlineElementmargin.should > 0
- end
- 
-     Then /^I validate that background properties in inline css exists$/ do
- inlineElementbackground = 0
-	@browser.elements.each do |element|
-		if element.tag_name == 'body'
-			element.elements.each do |bodyElement|
-					if bodyElement.style.include?"background"
-					inlineElementbackground = 10
-					puts "bodyElement.html is #{bodyElement.style} with a length of #{bodyElement.style.length}"
-					end
-					
-				end
-		end
-	end
-	inlineElementbackground.should > 0
- end
-     Then /^I validate that border properties in inline css exists$/ do
- inlineElementborder = 0
-	@browser.elements.each do |element|
-		if element.tag_name == 'body'
-			element.elements.each do |bodyElement|
-					if bodyElement.style.include?"border"
-					inlineElementborder = 10
-					puts "bodyElement.html is #{bodyElement.style} with a length of #{bodyElement.style.length}"
-					end
-					
-				end
-		end
-	end
-	inlineElementborder.should > 0
- end
-Then /^I validate that color properties in document css exists$/ do 
+  true.should == true
+end
+
+
+Then /^I display the styles defined in the document$/ do
 	styleElementLength = 0
 	@browser.elements.each do |element|
 		if element.tag_name == 'head'
 			element.elements.each do |headElement|
 				if headElement.tag_name == 'style'
 				puts "head elements is #{headElement.tag_name}"
-				puts " headElement text is #{headElement.text}"
+				puts " headElement are #{headElement.style}"
 										if headElement.text.include?"color"
 										styleElementLength = 10
 					puts "headElement.html is #{headElement.html} with a length of #{headElement.html.length}"
 				end
 				end
-				puts "head elements is #{headElement.tag_name}"
 			end
 		end
 	end
