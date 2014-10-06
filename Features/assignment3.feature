@@ -30,3 +30,22 @@ Feature: Student turns in assignment 3
     Given Successful navigation to a students page
     Then I validate that a h2 tag with an id of "class-title" and content "Internet Systems Programming" exists  	
 
+  @Ready
+  Scenario: Grader verifies the existence of a form tag
+    Given Successful navigation to a students page
+    Then I validate that a form tag exists
+
+  @Ready
+  Scenario: Grader verifies the existence of a name form field
+    Given Successful navigation to a students page
+    Then I validate that a form field with the name "name" and type "text" exists
+
+  @Ready
+  Scenario: Grader verifies the existence of a password form field
+    Given Successful navigation to a students page
+    Then I validate that a form field with the name "password" and type "password" exists
+
+  @Ready
+  Scenario: Grader verifies the existence of a email address form field
+    Given Successful navigation to a students page
+    Then I validate that a form field with the name "email" and type "text" exists

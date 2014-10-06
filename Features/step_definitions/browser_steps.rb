@@ -199,3 +199,13 @@ Then /^I display the styles defined in the document$/ do
 	end
 	styleElementLength.should > 0
 end 
+
+Then /^I validate that a form tag exists$/ do
+  form=@browser.form
+  form.exists?.should == true
+end
+
+Then /^I validate that a form field with the name "([^\"]*)" and type "([^\"]*)" exists$/ do |name, type|
+  input=@browser.input :name => name, :type => type
+  input.exists?.should == true
+end

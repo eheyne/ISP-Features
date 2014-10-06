@@ -80,7 +80,6 @@ Feature: Student turns in assignment 2
     Given Successful navigation to a students page
     Then I validate that a inline level CSS exists
 	
-	@Test
 	Scenario: Grader verifies the existence of specific css styles
     Given Successful navigation to a students page
     Then I display the styles defined
