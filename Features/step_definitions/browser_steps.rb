@@ -205,8 +205,27 @@ Then /^I validate that a form tag exists$/ do
   form.exists?.should == true
 end
 
-Then /^I validate that a form field with the name "([^\"]*)" and type "([^\"]*)" exists$/ do |name, type|
-  input=@browser.input :name => name, :type => type
-  input.exists?.should == true
+When /^I validate that a form field with the name "([^\"]*)" and type "([^\"]*)" exists$/ do |name, type|
+  @input=@browser.input :name => name, :type => type
+  @input.exists?.should == true
 end
 
+Then /^I validate that the name field does not have any numeric values$/ do
+  @input.value.length.should > 0
+  (/\d+/ =~ @input.value).should == nil
+end
+
+Then /^I validate that the password has at least 8 characters including at least 1 number$/ do
+  @input.value.length.should >= 8
+  (/\d+/ =~ @input.value).should_not == nil
+end
+
+Then /^I validate that the email field has the form asdf@asdf.com$/ do
+  @input.value.length.should > 0
+  (/\b[\w]+@[\w]+\.[\w]{2,4}\b/ =~ @input.value).should_not == nil
+end
+
+Then /^I validate that the phone field has the form 123-123-1234$/ do
+  @input.value.length.should > 0
+  (/\b[\d]{3}-[\d]{3}-[\d]{4}\b/ =~ @input.value).should_not == nil
+end
