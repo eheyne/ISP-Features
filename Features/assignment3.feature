@@ -49,3 +49,29 @@ Feature: Student turns in assignment 3
   Scenario: Grader verifies the existence of a email address form field
     Given Successful navigation to a students page
     Then I validate that a form field with the name "email" and type "text" exists
+
+	@Ready
+	 Scenario: Grader verifies the existence of a phone form field
+    Given Successful navigation to a students page
+    Then I validate that a form field with the name "phone" and type "text" exists
+	
+	@Ready
+	 Scenario: Grader verifies the existence of a address form field
+    Given Successful navigation to a students page
+    Then I validate that a form field with the name "address" and type "text" exists
+	
+@Ready
+	 Scenario: Grader verifies the existence of a date form field
+    Given Successful navigation to a students page
+    Then I validate that a form field with the name "date" and type "text" exists
+	
+	 	@Ready
+	 Scenario: Grader verifies the existence of a time form field
+    Given Successful navigation to a students page
+    Then I validate that a form field with the name "time" and type "text" exists
+	
+	@Ready
+	 Scenario: Grader verifies the existence of a numeric form field
+    Given Successful navigation to a students page
+    Then I validate that a form field with the name "numeric" and type "text" exists
+	

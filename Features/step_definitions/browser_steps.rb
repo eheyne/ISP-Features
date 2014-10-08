@@ -209,3 +209,4 @@ Then /^I validate that a form field with the name "([^\"]*)" and type "([^\"]*)"
   input=@browser.input :name => name, :type => type
   input.exists?.should == true
 end
+
