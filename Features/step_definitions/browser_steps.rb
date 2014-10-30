@@ -210,6 +210,12 @@ When /^I validate that a form field with the name "([^\"]*)" and type "([^\"]*)"
   @input.exists?.should == true
 end
 
+Then /^I validate that the form field with the name "([^\"]*)" has a default value of 0$/ do |name|
+  @input=@browser.input :name => name
+  (/^[0]*\.?[0]*$/ =~ @input.value).should_not == nil
+  @input.exists?.should == true
+end
+
 Then /^I validate that the name field does not have any numeric values$/ do
   @input.value.length.should > 0
   (/\d+/ =~ @input.value).should == nil
@@ -229,3 +235,26 @@ Then /^I validate that the phone field has the form 123-123-1234$/ do
   @input.value.length.should > 0
   (/\b[\d]{3}-[\d]{3}-[\d]{4}\b/ =~ @input.value).should_not == nil
 end
+
+When /^I enter the number "([^\"]*)" in the "([^\"]*)" form text field$/ do |number, name|
+  @input=@browser.text_field :name => name
+  @input.set number
+end
+
+And /^I click the "([^\"]*)" button$/ do |name|
+  @output_value=(@browser.text_field :name => "output").value.to_f
+  @input=@browser.input :name => name
+  @button_clicked = name
+  @input.click
+end
+
+Then /^I should see the correct result in the "([^\"]*)" form field$/ do |name|
+  input_value=(@browser.text_field :name => "input").value.to_f
+  @output=(@browser.input :name => name).value.to_f
+  @output.should == (@output_value + input_value) if @button_clicked == "add"
+  @output.should == (@output_value - input_value) if @button_clicked == "subtract"
+  @output.should == (@output_value * input_value) if @button_clicked == "multiply" 
+  @output.should == (@output_value / input_value) if @button_clicked == "divide" 
+  @output.should == input_value if @button_clicked == "equal" 
+end
+
