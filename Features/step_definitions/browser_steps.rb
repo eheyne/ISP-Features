@@ -31,12 +31,12 @@ end
 
 Then /^I validate that a h1 tag with an id of "([^\"]*)" and content "([^\"]*)" exists$/ do |id,content|
   h1=@browser.h1 :id =>id
-  h1.text.should.upcase == content.upcase
+  h1.text.upcase.should == content.upcase
 end
   
 Then /^I validate that a h2 tag with an id of "([^\"]*)" and content "([^\"]*)" exists$/ do |id,content|
   h2=@browser.h2 :id =>id
-  h2.text.should.upcase == content.upcase
+  h2.text.upcase.should == content.upcase
 end
 
 Then /^I validate that a line break exists$/ do
@@ -207,6 +207,11 @@ end
 
 When /^I validate that a form field with the name "([^\"]*)" and type "([^\"]*)" exists$/ do |name, type|
   @input=@browser.input :name => name, :type => type
+  
+  if !@input.exists? then
+    @input=@browser.input:name => name + "s", :type => type
+  end
+
   @input.exists?.should == true
 end
 
@@ -244,6 +249,9 @@ end
 And /^I click the "([^\"]*)" button$/ do |name|
   @output_value=(@browser.text_field :name => "output").value.to_f
   @input=@browser.input :name => name
+  if !@input.exists? then
+    @input=@browser.input:name => name + "s"
+  end
   @button_clicked = name
   @input.click
 end
@@ -255,6 +263,6 @@ Then /^I should see the correct result in the "([^\"]*)" form field$/ do |name|
   @output.should == (@output_value - input_value) if @button_clicked == "subtract"
   @output.should == (@output_value * input_value) if @button_clicked == "multiply" 
   @output.should == (@output_value / input_value) if @button_clicked == "divide" 
-  @output.should == input_value if @button_clicked == "equal" 
+  @output.should == input_value if @button_clicked == "equal" || @button_clicked == "equals"
 end
 

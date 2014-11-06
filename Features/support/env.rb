@@ -1,8 +1,9 @@
 ﻿$LOAD_PATH.unshift File.join(File.dirname(__FILE__), '../../lib')
 
 require 'watir-webdriver'
+require 'ua_browser'
 
-ENV['BROWSER']         = "chrome"                         unless ENV['BROWSER']
+ENV['BROWSER']         = "chrome"       unless ENV['BROWSER']
 
 puts "The browser type is #{ENV['BROWSER']}"
 
@@ -10,7 +11,7 @@ client = Selenium::WebDriver::Remote::Http::Default.new
 client.timeout = 180 # seconds – default is 60
 
 if ENV["SINGLE_BROWSER"] then
-  browser = Watir::Browser.new
+  browser = UaBrowser.new
 else
   browser = nil
 end
@@ -19,7 +20,7 @@ Before do
   if ENV["SINGLE_BROWSER"] then
     @browser = browser
   else
-    @browser = Watir::Browser.new
+    @browser = UaBrowser.new
   end
 end
 
