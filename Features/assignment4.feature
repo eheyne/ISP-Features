@@ -70,21 +70,21 @@ Feature: Student turns in assignment 4
   @Ready4
   Scenario: Grader verifies the addition functionality
     Given Successful navigation to a students page
-    When I enter the number "5" in the "input" form text field
+    When I enter the value "5" in the "input" form text field
     And I click the "add" button
     Then I should see the correct result in the "output" form field
    
   @Ready4
   Scenario: Grader verifies the subtract functionality
     Given Successful navigation to a students page
-    When I enter the number "5" in the "input" form text field
+    When I enter the value "5" in the "input" form text field
     And I click the "subtract" button
     Then I should see the correct result in the "output" form field
 
   @Ready4
   Scenario: Grader verifies the multiply functionality
     Given Successful navigation to a students page
-    When I enter the number "5" in the "input" form text field
+    When I enter the value "5" in the "input" form text field
     And I click the "equal" button
     And I click the "multiply" button 
     Then I should see the correct result in the "output" form field
@@ -92,8 +92,8 @@ Feature: Student turns in assignment 4
   @Ready4
   Scenario: Grader verifies the divide functionality
     Given Successful navigation to a students page
-    When I enter the number "500" in the "input" form text field
+    When I enter the value "500" in the "input" form text field
     And I click the "equal" button
-    When I enter the number "5" in the "input" form text field
+    When I enter the value "5" in the "input" form text field
     And I click the "divide" button 
     Then I should see the correct result in the "output" form field

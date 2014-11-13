@@ -30,4 +30,38 @@ Feature: Student turns in assignment 5
     Given Successful navigation to a students page
     Then I validate that a h2 tag with an id of "class-title" and content "Internet Systems Programming" exists  	
 
+  @Ready5
+  Scenario: Grader checks for all form fields
+    Given Successful navigation to a students page
+    Then I validate that a form field with the name "phone" and type "text" exists
+    And I validate that a form field with the name "fname" and type "text" exists
+    And I validate that a form field with the name "mi" and type "text" exists
+    And I validate that a form field with the name "lname" and type "text" exists
+    And I validate that a form field with the name "account" and type "text" exists
+
+  @Ready5
+  Scenario: Grader checks that entering an existing phone number into the phone number field and then leaving, pre-fills the name and account
+    Given Successful navigation to a students page
+    And I enter the value "7777171" in the "phone" form text field
+    And I enter the value "abc" in the "fname" form text field
+    And I enter the value "d" in the "mi" form text field
+    And I enter the value "efg" in the "lname" form text field
+    And I enter the value "1000" in the "account" form text field
+    And I click the submit button
+    When I enter the value "7777171" in the "phone" form text field
+    And I leave the input field with the name "phone" 
+    Then I should see the correct value of "abc" in the "fname" form text field
+    And I should see the correct value of "d" in the "mi" form text field
+    And I should see the correct value of "efg" in the "lname" form text field
+    And I should see the correct value of "1000" in the "account" form text field
+
+  @Ready5
+  Scenario: Grader checks that entering a phone number that does not exist and then leaving, handles not finding a match
+    Given Successful navigation to a students page
+    When I enter the value "9182734" in the "phone" form text field
+    And I leave the input field with the name "phone" 
+    Then I should see the correct value of "" in the "fname" form text field
+    And I should see the correct value of "" in the "mi" form text field
+    And I should see the correct value of "" in the "lname" form text field
+    And I should see the correct value of "" in the "account" form text field
 

@@ -241,9 +241,14 @@ Then /^I validate that the phone field has the form 123-123-1234$/ do
   (/\b[\d]{3}-[\d]{3}-[\d]{4}\b/ =~ @input.value).should_not == nil
 end
 
-When /^I enter the number "([^\"]*)" in the "([^\"]*)" form text field$/ do |number, name|
+When /^I enter the value "([^\"]*)" in the "([^\"]*)" form text field$/ do |number, name|
   @input=@browser.text_field :name => name
   @input.set number
+end
+
+And /^I click the submit button$/ do
+  submit_button=@browser.element(:css => "input[type=submit]")
+  submit_button.click
 end
 
 And /^I click the "([^\"]*)" button$/ do |name|
@@ -266,3 +271,12 @@ Then /^I should see the correct result in the "([^\"]*)" form field$/ do |name|
   @output.should == input_value if @button_clicked == "equal" || @button_clicked == "equals"
 end
 
+And /^I leave the input field with the name "([^\"]*)"$/ do |name|
+  form_text_field=(@browser.text_field :name => name)
+  form_text_field.send_keys :tab
+end
+
+Then /^I should see the correct value of "([^\"]*)" in the "([^\"]*)" form text field$/ do |value, name|
+  form_text_field=(@browser.text_field :name => name)
+  form_text_field.value.should == value
+end
