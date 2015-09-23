@@ -259,16 +259,16 @@ And /^I click the "([^\"]*)" button$/ do |name|
     @input=@browser.input:name => name + "s"
   end
   @button_clicked = name
+  @input_value=(@browser.text_field :name => "input").value.to_f
   @input.click
 end
 
 Then /^I should see the correct result in the "([^\"]*)" form field$/ do |name|
-  input_value=(@browser.text_field :name => "input").value.to_f
   @output=(@browser.input :name => name).value.to_f
-  @output.should == (@output_value + input_value) if @button_clicked == "add"
-  @output.should == (@output_value - input_value) if @button_clicked == "subtract"
-  @output.should == (@output_value * input_value) if @button_clicked == "multiply" 
-  @output.should == (@output_value / input_value) if @button_clicked == "divide" 
+  @output.should == (@output_value + @input_value) if @button_clicked == "add"
+  @output.should == (@output_value - @input_value) if @button_clicked == "subtract"
+  @output.should == (@output_value * @input_value) if @button_clicked == "multiply" 
+  @output.should == (@output_value / @input_value) if @button_clicked == "divide" 
   @output.should == input_value if @button_clicked == "equal" || @button_clicked == "equals"
 end
 
