@@ -249,6 +249,7 @@ end
 And /^I click the submit button$/ do
   submit_button=@browser.element(:css => "input[type=submit]")
   submit_button.click
+  sleep 2
 end
 
 And /^I click the "([^\"]*)" button$/ do |name|
@@ -276,7 +277,15 @@ And /^I leave the input field with the name "([^\"]*)"$/ do |name|
   form_text_field.send_keys :tab
 end
 
+And /^I clear all of the form data$/ do
+  all_text_inputs=@browser.elements(:css => "input[type=text]")
+  all_text_inputs.each do |input|
+    puts "#{input.text}"
+  end 
+end
+
 Then /^I should see the correct value of "([^\"]*)" in the "([^\"]*)" form text field$/ do |value, name|
+  puts ("value is #{value} and name is #{name}")
   form_text_field=(@browser.text_field :name => name)
   form_text_field.value.should == value
 end

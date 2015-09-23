@@ -48,7 +48,8 @@ Feature: Student turns in assignment 5
     And I enter the value "efg" in the "lname" form text field
     And I enter the value "1000" in the "account" form text field
     And I click the submit button
-    When I enter the value "7777171" in the "phone" form text field
+    When I clear all of the form data
+    And I enter the value "7777171" in the "phone" form text field
     And I leave the input field with the name "phone" 
     Then I should see the correct value of "abc" in the "fname" form text field
     And I should see the correct value of "d" in the "mi" form text field
