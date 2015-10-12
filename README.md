@@ -52,6 +52,12 @@ Create an output folder off the root of ISP-Features.
 mkdir output
 ```
 
+and for each assignment create a folder in output
+
+```
+mkdir Assignment2
+```
+
 Now you are ready to run the grader.  You will need to tell the grader what the name of the file is that has all of the URLs in it.
 
 ```
