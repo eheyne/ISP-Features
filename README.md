@@ -28,6 +28,10 @@ Once ruby and the devkit has been installed you will need to install a gem that 
 gem install bundler
 ```
 
+### Install Chrome Web Driver
+
+Navigate to [http://chromedriver.storage.googleapis.com/index.html?path=2.19/](http://chromedriver.storage.googleapis.com/index.html?path=2.19/) and download the appropriate driver based on your operating system.  This download will consist of a compressed file.  Unzip the compressed file and it will contain one file.  Copy this file to somewhere where it will be in your path, I usually put it in with my ruby install `bin` folder.
+
 
 ### Download the ISP-Features from Github
 
