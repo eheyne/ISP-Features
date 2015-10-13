@@ -289,3 +289,18 @@ Then /^I should see the correct value of "([^\"]*)" in the "([^\"]*)" form text 
   form_text_field=(@browser.text_field :name => name)
   form_text_field.value.should == value
 end
+
+Then /^I validate that a SVG "([^\"]*)" exists$/ do |svg_element|
+  svg_elements = @browser.elements(:css => "svg " + svg_element)
+  svg_elements.length.should > 0
+end
+
+Then /^I validate that a Circle exists$/ do
+  svg_elements = @browser.elements(:css => "svg circle")
+  svg_elements.length.should > 0
+end
+
+Then /^I validate that an Ellipse exists$/ do
+  svg_elements = @browser.elements(:css => "svg ellipse")
+  svg_elements.length.should > 0
+end
