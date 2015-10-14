@@ -10,7 +10,7 @@ File.open(file, "r") do |file_handle|
     echo_student_url_cmd = "echo $STUDENT_URL"
     value = %x(#{echo_student_url_cmd})
     puts "STUDENT_URL is #{value}"
-    cucumber_cmd = "cucumber --tag @Ready --format html > ./output/Assignment2/#{id}.html"
+    cucumber_cmd = "bundle exec cucumber --tag @Assignment2 --format html > ./output/Assignment2/#{id}.html"
     puts "Executing command: #{cucumber_cmd}"
     %x(#{cucumber_cmd})
   end
